@@ -131,3 +131,44 @@ std::wostream& operator<<(std::wostream& os, const ODD& odd)
        << L"Скорость: " << odd.speed << L"x" << std::endl;
     return os;
 }
+
+ODD_Parent::ODD_Parent(std::wstring name, std::wstring manufacturer)
+{
+    this->name = name;
+    this->manufacturer = manufacturer;
+}
+
+void ODD_Parent::setName(std::wstring name)
+{
+    this->name = name;
+}
+
+void ODD_Parent::setManufacturer(std::wstring manufacturer)
+{
+    this->manufacturer = manufacturer;
+}
+
+std::wstring ODD_Parent::getName()
+{
+    return this->name;
+}
+
+std::wstring ODD_Parent::getManufacturer()
+{
+    return this->manufacturer;
+}
+
+ODD_Child::ODD_Child(std::wstring name, std::wstring manufacturer, int size):ODD_Parent(name, manufacturer)
+{
+    this->size = size;
+}
+
+void ODD_Child::setSize(int size)
+{
+    this->size = size;
+}
+
+int ODD_Child::getSize()
+{
+    return this->size;
+}

@@ -9,6 +9,8 @@ int main()
     ODD samsung(L"T152", L"Samsung", ODD::CD, 3.12f, ODD::low);
     ODD copy;
 
+    std::wcout << copy << std::endl;
+
     copy = toshiba;
     std::wcout << copy << std::endl;
     copy = samsung;
@@ -21,4 +23,8 @@ int main()
     std::wcout << samsung.getSize() << std::endl;
     samsung.setSize(4.5f);
     std::wcout << samsung.getSize() << std::endl;
+
+
+    ODD_Child child(L"Test", L"Test", 10);
+    std::wcout << child.getName() << std::endl;
 }

@@ -46,4 +46,26 @@ class ODD
         ODD& operator=(const ODD& copy);
 };
 
+class ODD_Parent
+{
+    std::wstring name;
+    std::wstring manufacturer;
+
+    public:
+        ODD_Parent(std::wstring name, std::wstring manufacturer);
+        void setName(std::wstring name);
+        void setManufacturer(std::wstring manufacturer);
+        std::wstring getName();
+        std::wstring getManufacturer();
+};
+
+class ODD_Child: public ODD_Parent
+{
+    int size;
+    public:
+        ODD_Child(std::wstring name, std::wstring manufacturer, int size);
+        void setSize(int size);
+        int getSize();
+};
+
 #endif // ODD_HPP
