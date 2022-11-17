@@ -48,3 +48,8 @@ void ODD::show()
               << this->size << "-" <<"inch" << " "
               << this->speed << "-" << "x" << " ";
 }
+
+std::string ODD::getName()
+{
+
+}
