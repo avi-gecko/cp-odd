@@ -12,27 +12,35 @@ class ODD
         std::wstring manufacturer;
         types type;
         int size;
+        float fsize;
         speeds speed;
 
     public:
-        ODD(const std::wstring name = L"None"
-          , const std::wstring manufacturer = L"None"
-          , types type = CD
-          , int size = 0
-          , speeds speed = low);
+        ODD();
+        ODD(const std::wstring name
+          , const std::wstring manufacturer
+          , types type
+          , int size
+          , speeds speed);
+        ODD(const std::wstring name
+          , const std::wstring manufacturer
+          , types type
+          , float size
+          , speeds speed);
         ~ODD();
 
         void setName(std::wstring name);
         void setManufacturer(std::wstring manufacturer);
         void setType(types type);
         void setSize(int size);
+        void setSize(float size);
         void setSpeed(speeds speed);
 
         friend std::wostream& operator<<(std::wostream& os, const ODD& odd);
         std::wstring getName();
         std::wstring getManufacturer();
         types getType();
-        int getSize();
+        float getSize();
         speeds getSpeed();
 
         ODD& operator=(const ODD& copy);

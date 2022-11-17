@@ -1,6 +1,16 @@
 #include "odd.hpp"
 #include <iostream>
 
+ODD::ODD()
+{
+    this->name = L"None";
+    this->manufacturer = L"None";
+    this->type = ODD::CD;
+    this->size = 0;
+    this->fsize = 0.f;
+    this->speed = ODD::low;
+}
+
 ODD::ODD(std::wstring name
         , std::wstring manufacturer
         , types type
@@ -12,6 +22,17 @@ ODD::ODD(std::wstring name
     this->manufacturer = manufacturer;
     this->type = type;
     this->size = size;
+    this->fsize = 0.f;
+    this->speed = speed;
+}
+
+ODD::ODD(const std::wstring name, const std::wstring manufacturer, types type, float size, speeds speed)
+{
+    this->name = name;
+    this->manufacturer = manufacturer;
+    this->type = type;
+    this->size = 0;
+    this->fsize = size;
     this->speed = speed;
 }
 
@@ -37,7 +58,14 @@ void ODD::setType(types type)
 
 void ODD::setSize(int size)
 {
+    this->fsize = 0;
     this->size = size;
+}
+
+void ODD::setSize(float size)
+{
+    this->size = 0;
+    this->fsize = size;
 }
 
 void ODD::setSpeed(speeds speed)
@@ -60,9 +88,9 @@ ODD::types ODD::getType()
     return this->type;
 }
 
-int ODD::getSize()
+float ODD::getSize()
 {
-    return this->size;
+    return this->size ? this->size : this->fsize;
 }
 
 ODD::speeds ODD::getSpeed()
@@ -77,6 +105,7 @@ ODD &ODD::operator=(const ODD &copy)
     this->name = copy.name;
     this->manufacturer = copy.manufacturer;
     this->type = copy.type;
+    this->fsize = copy.fsize;
     this->size = copy.size;
     this->speed = copy.speed;
     return *this;
@@ -98,7 +127,7 @@ std::wostream& operator<<(std::wostream& os, const ODD& odd)
     os << L"Название: " << odd.name << L"\n"
        << L"Производитель: " << odd.manufacturer << L"\n"
        << L"Тип: " << type << L"\n"
-       << L"Размер: " << odd.size << L" inch" << L"\n"
+       << L"Размер: " << (odd.size ? odd.size : odd.fsize) << L" inch" << L"\n"
        << L"Скорость: " << odd.speed << L"x" << std::endl;
     return os;
 }
