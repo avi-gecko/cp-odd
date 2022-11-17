@@ -3,7 +3,7 @@
 
 ODD::ODD(std::string name
         , std::string manufacturer
-        , std::string type
+        , types type
         , int size
         , speeds speed)
 
@@ -25,7 +25,7 @@ void ODD::setManufacturer(std::string manufacturer)
     this->manufacturer = manufacturer;
 }
 
-void ODD::setType(std::string type)
+void ODD::setType(types type)
 {
     this->type = type;
 }
@@ -42,14 +42,45 @@ void ODD::setSpeed(speeds speed)
 
 void ODD::show()
 {
+    std::string type;
+    switch(this->type)
+    {
+        case ODD::CD: type = "CD"; break;
+        case ODD::CD_R: type = "CD-R"; break;
+        case ODD::CD_RW: type = "CD-RW"; break;
+        case ODD::DVD_R: type = "DVD-R"; break;
+        case ODD::DVD_RAM: type = "DVD-RAM"; break;
+        case ODD::DVD_ROM: type = "DVD-ROM"; break;
+        case ODD::DVD_RW: type = "DVD-RW"; break;
+    }
     std::cout << this->name << " "
               << this->manufacturer << " "
-              << this->type << " "
+              << type << " "
               << this->size << "-" <<"inch" << " "
-              << this->speed << "-" << "x" << " ";
+              << this->speed << "-" << "x" << " " << std::endl;
 }
 
 std::string ODD::getName()
 {
+    return this->name;
+}
 
+std::string ODD::getManufacturer()
+{
+    return this->manufacturer;
+}
+
+ODD::types ODD::getType()
+{
+    return this->type;
+}
+
+int ODD::getSize()
+{
+    return this->size;
+}
+
+ODD::speeds ODD::getSpeed()
+{
+    return this->speed;
 }
