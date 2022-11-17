@@ -15,6 +15,11 @@ ODD::ODD(std::wstring name
     this->speed = speed;
 }
 
+ODD::~ODD()
+{
+
+}
+
 void ODD::setName(std::wstring name)
 {
     this->name = name;
@@ -63,6 +68,18 @@ int ODD::getSize()
 ODD::speeds ODD::getSpeed()
 {
     return this->speed;
+}
+
+ODD &ODD::operator=(const ODD &copy)
+{
+    if (this == &copy)
+        return *this;
+    this->name = copy.name;
+    this->manufacturer = copy.manufacturer;
+    this->type = copy.type;
+    this->size = copy.size;
+    this->speed = copy.speed;
+    return *this;
 }
 
 std::wostream& operator<<(std::wostream& os, const ODD& odd)

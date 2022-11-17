@@ -15,11 +15,12 @@ class ODD
         speeds speed;
 
     public:
-        ODD(std::wstring name = L"None"
-          , std::wstring manufacturer = L"None"
+        ODD(const std::wstring name = L"None"
+          , const std::wstring manufacturer = L"None"
           , types type = CD
           , int size = 0
           , speeds speed = low);
+        ~ODD();
 
         void setName(std::wstring name);
         void setManufacturer(std::wstring manufacturer);
@@ -33,6 +34,8 @@ class ODD
         types getType();
         int getSize();
         speeds getSpeed();
+
+        ODD& operator=(const ODD& copy);
 };
 
 #endif // ODD_HPP
