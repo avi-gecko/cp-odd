@@ -8,28 +8,28 @@ class ODD
         enum speeds {low = 1, average = 16, fast = 48};
         enum types {CD, CD_R, CD_RW, DVD_ROM, DVD_R, DVD_RW, DVD_RAM};
     private:
-        std::string name;
-        std::string manufacturer;
+        std::wstring name;
+        std::wstring manufacturer;
         types type;
         int size;
         speeds speed;
 
     public:
-        ODD(std::string name = "None"
-          , std::string manufacturer = "None"
+        ODD(std::wstring name = L"None"
+          , std::wstring manufacturer = L"None"
           , types type = CD
           , int size = 0
           , speeds speed = low);
 
-        void setName(std::string name);
-        void setManufacturer(std::string manufacturer);
+        void setName(std::wstring name);
+        void setManufacturer(std::wstring manufacturer);
         void setType(types type);
         void setSize(int size);
         void setSpeed(speeds speed);
 
-        void show();
-        std::string getName();
-        std::string getManufacturer();
+        friend std::wostream& operator<<(std::wostream& os, const ODD& odd);
+        std::wstring getName();
+        std::wstring getManufacturer();
         types getType();
         int getSize();
         speeds getSpeed();

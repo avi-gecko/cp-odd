@@ -1,8 +1,8 @@
 #include "odd.hpp"
 #include <iostream>
 
-ODD::ODD(std::string name
-        , std::string manufacturer
+ODD::ODD(std::wstring name
+        , std::wstring manufacturer
         , types type
         , int size
         , speeds speed)
@@ -15,12 +15,12 @@ ODD::ODD(std::string name
     this->speed = speed;
 }
 
-void ODD::setName(std::string name)
+void ODD::setName(std::wstring name)
 {
     this->name = name;
 }
 
-void ODD::setManufacturer(std::string manufacturer)
+void ODD::setManufacturer(std::wstring manufacturer)
 {
     this->manufacturer = manufacturer;
 }
@@ -40,32 +40,12 @@ void ODD::setSpeed(speeds speed)
     this->speed = speed;
 }
 
-void ODD::show()
-{
-    std::string type;
-    switch(this->type)
-    {
-        case ODD::CD: type = "CD"; break;
-        case ODD::CD_R: type = "CD-R"; break;
-        case ODD::CD_RW: type = "CD-RW"; break;
-        case ODD::DVD_R: type = "DVD-R"; break;
-        case ODD::DVD_RAM: type = "DVD-RAM"; break;
-        case ODD::DVD_ROM: type = "DVD-ROM"; break;
-        case ODD::DVD_RW: type = "DVD-RW"; break;
-    }
-    std::cout << this->name << " "
-              << this->manufacturer << " "
-              << type << " "
-              << this->size << "-" <<"inch" << " "
-              << this->speed << "-" << "x" << " " << std::endl;
-}
-
-std::string ODD::getName()
+std::wstring ODD::getName()
 {
     return this->name;
 }
 
-std::string ODD::getManufacturer()
+std::wstring ODD::getManufacturer()
 {
     return this->manufacturer;
 }
@@ -83,4 +63,25 @@ int ODD::getSize()
 ODD::speeds ODD::getSpeed()
 {
     return this->speed;
+}
+
+std::wostream& operator<<(std::wostream& os, const ODD& odd)
+{
+    std::wstring type;
+    switch(odd.type)
+    {
+        case ODD::CD: type = L"CD"; break;
+        case ODD::CD_R: type = L"CD-R"; break;
+        case ODD::CD_RW: type = L"CD-RW"; break;
+        case ODD::DVD_R: type = L"DVD-R"; break;
+        case ODD::DVD_RAM: type = L"DVD-RAM"; break;
+        case ODD::DVD_ROM: type = L"DVD-ROM"; break;
+        case ODD::DVD_RW: type = L"DVD-RW"; break;
+    }
+    os << L"Название: " << odd.name << L"\n"
+       << L"Производитель: " << odd.manufacturer << L"\n"
+       << L"Тип: " << type << L"\n"
+       << L"Размер: " << odd.size << L" inch" << L"\n"
+       << L"Скорость: " << odd.speed << L"x" << std::endl;
+    return os;
 }

@@ -4,6 +4,7 @@
 
 int main()
 {
-    ODD toshiba("Toshiba", "Toshiba", ODD::DVD_RAM, 5, ODD::fast);
-
+    setlocale(LC_ALL, "ru_RU.utf8");
+    ODD toshiba(L"Toshiba", L"Toshiba", ODD::DVD_RAM, 5, ODD::fast);
+    std::wcout << toshiba;
 }
