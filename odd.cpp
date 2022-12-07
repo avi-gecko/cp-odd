@@ -11,6 +11,16 @@ ODD::ODD()
     this->speed = ODD::low;
 }
 
+ODD::ODD(const ODD& copy)
+{
+    this->name = copy.name;
+    this->manufacturer = copy.manufacturer;
+    this->type = copy.type;
+    this->fsize = copy.fsize;
+    this->size = copy.size;
+    this->speed = copy.speed;
+}
+
 ODD::ODD(std::wstring name
         , std::wstring manufacturer
         , types type

@@ -17,6 +17,7 @@ class ODD
 
     public:
         ODD();
+        ODD(const ODD& copy);
         ODD(const std::wstring name
           , const std::wstring manufacturer
           , types type
